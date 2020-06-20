@@ -87,6 +87,7 @@ public class VehiculoAutonomoAPP {
         else{
             System.out.println(prueba2.getResultado()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
         }
+        System.out.println("esto fue el codigo realizado");
     }
     
 }
