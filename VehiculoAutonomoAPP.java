@@ -1,5 +1,5 @@
 /*PROCESO DE RENDIMIENTO Y EFICIENCIA DE CONDUCCION DE UN
-VEHICULO AUTONOMO
+VEHICULO AUTONOMO_RECARGO
  */
 package vehiculoautonomo;
 
@@ -9,28 +9,25 @@ package vehiculoautonomo;
 class VehiculoAutonomo {
 
     //ATRIBUTOS
-    private String control;
+ 
     private String proceso;
-    private int eficiencia;
-    private int resultado;
+    private double eficiencia_mecanica;
    
 //COSNTRUCTOR
-  public VehiculoAutonomo(String pControl, String pProceso, int pEficiencia, int pResultado){
-      control= pControl;
-      proceso= pProceso;
-      eficiencia= pEficiencia;
-      resultado= pResultado;
+    public VehiculoAutonomo (String proceso){
+        this(proceso, 120);//recargo
+    }
+  public VehiculoAutonomo(String Proceso, double eficiencia_mecanica){
+      this.proceso =Proceso;
+     
+      if(eficiencia_mecanica>500){
+          this.eficiencia_mecanica=500;
+      }else{
+          this.eficiencia_mecanica=eficiencia_mecanica;
+      }
   }  
   
  //METODOS
-  public String getControl(){
-      return control;
-  }
-
-  public void setControl(String control){
-      this.control=control;
-  }
-  
   
   public String getProceso(){
       return proceso;
@@ -39,55 +36,54 @@ class VehiculoAutonomo {
     this.proceso=proceso;
 }
   
-  
-  public int getEficiencia(){
-      return eficiencia;
+  public double getEficiencia_Mecanica(){
+      return eficiencia_mecanica;
   }
-  public void setEficiencia(int eficiencia){
-      this.eficiencia=eficiencia;
+  public void setEficiencia_Mecanica(int eficiencia_mecanica){
+      this.eficiencia_mecanica=eficiencia_mecanica;
   }
-  
-  public int getResultado(){
-      return resultado;
-  }
-  public void setResultado(int resultado){
-      this.resultado=resultado;
-  }
-  
+
+public void Obtener_Eficiencia_Proceso(double eficiencia_mecanica){
+    if(eficiencia_mecanica>500){
+        this.eficiencia_mecanica += eficiencia_mecanica;
+    }
+}
+public void Volver_Iniciar_Pruevas(double eficiencia_mecanica){
+    if(eficiencia_mecanica<500){
+        this.eficiencia_mecanica=eficiencia_mecanica;
+    }else{
+        this.eficiencia_mecanica -= eficiencia_mecanica;
+    }
+}
   @Override
   public String toString(){
-      return "El vehiculo autonomo posee un control: "+control+" con diferentes procesos: "+proceso+"--"
-              + "\nen los cuales se detectan los valores de eficiencia: "+eficiencia+" sobre mil, "
-              + "siendo registrados en las pruevas respectivas "
-              +"\ndando un valor de: "+resultado+"% como resultado efectivo\n\n";
+      return "El vehiculo autonomo posee diferentes procesos: "+proceso+"--"
+              + "\nen los cuales se detectan los valores de eficiencia: "+eficiencia_mecanica+" sobre mil, "
+              + "siendo registrados en las pruevas respectivas \n";
   }
 }
-
 public class VehiculoAutonomoAPP {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // CREAMOS LOS OBJETOS
-        VehiculoAutonomo prueba1=new VehiculoAutonomo("Neuronal Sinaptico","Tegnologicos Automaticos",234,67);
-        VehiculoAutonomo prueba2=new VehiculoAutonomo("Deep-Test Automatically","Neuronal",345,89);
+       
+        VehiculoAutonomo prueba1=new VehiculoAutonomo("Tegnologicos Automaticos",867);
+        VehiculoAutonomo prueba2=new VehiculoAutonomo("Deep-Test Automatically",745);
+ 
+          prueba1.Obtener_Eficiencia_Proceso(990);
+          prueba2.Obtener_Eficiencia_Proceso(868);
         
-        //MOSTRAMOS EL ESTADO
-        System.out.println(prueba1.toString());
-        System.out.println(prueba2.toString());
+          prueba1.Volver_Iniciar_Pruevas(704);
+          prueba2.Volver_Iniciar_Pruevas(850);
         
-        //MODIFICAMOS EL ATRIBUTO CORRESPONDIENTE A "Resultado" de la prueva 1
-        prueba1.setResultado(86);
-        
-        //COMPRAMOS QUE PRUEBA TIENE EL MEJOR RESULTADO
-        if(prueba1.getResultado()>prueba2.getResultado()){
-            System.out.println(prueba1.getResultado()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
-        }
-        else{
-            System.out.println(prueba2.getResultado()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
-        }
-        System.out.println("esto fue el codigo realizado");
-    }
-    
+          System.out.println(prueba1);
+          System.out.println(prueba2);
+          
+      
+    //COMPARAMOS QUIE TIENE LA MEJOR EFICIENCIA
+    if(prueba1.getEficiencia_Mecanica()> prueba2.getEficiencia_Mecanica()){
+      System.out.println(prueba1.getEficiencia_Mecanica()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
+     }
+    else{
+      System.out.println(prueba2.getEficiencia_Mecanica()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
+ }}
 }
+
