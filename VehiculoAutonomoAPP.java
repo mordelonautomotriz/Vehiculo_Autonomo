@@ -77,13 +77,13 @@ public class VehiculoAutonomoAPP {
           System.out.println(prueba1);
           System.out.println(prueba2);
           
-      
-    //COMPARAMOS QUIE TIENE LA MEJOR EFICIENCIA
+       //COMPARAMOS QUIE TIENE LA MEJOR EFICIENCIA
     if(prueba1.getEficiencia_Mecanica()> prueba2.getEficiencia_Mecanica()){
       System.out.println(prueba1.getEficiencia_Mecanica()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
      }
     else{
       System.out.println(prueba2.getEficiencia_Mecanica()+"% es el mejor resultado de las 2 pruebas realizadas en campo abierto");
+   
  }}
 }
 
